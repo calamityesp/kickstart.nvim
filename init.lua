@@ -1,4 +1,2 @@
 require("kdds")
-require("kickstart")"
-
-
+require("kickstart")

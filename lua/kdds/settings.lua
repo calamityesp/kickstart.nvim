@@ -8,7 +8,6 @@ vim.opt.shiftwidth = 3
 vim.opt.smarttab= true
 vim.opt.smartindent = true
 
-
 -- highlight options
 vim.opt.hlsearch = true
 vim.opt.incsearch = true                                             -- highlight as you are searching values
@@ -22,7 +21,6 @@ vim.opt.scrolloff = 10                                               -- never ha
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-
 --file options
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -32,4 +30,23 @@ vim.opt.updatetime = 50
 
 -- vim terminal options 
 vim.opt.termguicolors = true
-vim.opt.mouse= ""
+
+-- vim editor options 
+vim.opt.mouse= 'a'                                                -- Setting mouse mode on/off (useful for resizing) 
+vim.opt.mousemodel= 'extend'
+vim.opt.clipboard='unnamedplus'                                   -- sync clipboard with os and neovim
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+

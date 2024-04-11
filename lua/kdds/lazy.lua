@@ -13,6 +13,27 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
+   -- ***Sleuth            -- Detect tabstop and shiftwidth automatically
+   'tpope/vim-sleuth',
+
+   -- ***Comment           -- "gc" to comment visual regions/lines
+   { 'numToStr/Comment.nvim', opts = {} },
+
+   -- Adds git related signs to the gutter, as well as utilities for managing changes
+   -- See `:help gitsigns` to understand what the configuration keys do
+   {
+      'lewis6991/gitsigns.nvim',
+      opts = {
+         signs = {
+            add = { text = '+' },
+            change = { text = '~' },
+            delete = { text = '_' },
+            topdelete = { text = '‾' },
+            changedelete = { text = '~' },
+         },
+      },
+   },
+
 
 -----------------------------Install themes and syntax highlighting -----------------
 	{ 'Mofiqul/vscode.nvim', as = 'vscode-syn' },
