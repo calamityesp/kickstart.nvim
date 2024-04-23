@@ -16,15 +16,17 @@ vim.opt.incsearch = true                                             -- highligh
 vim.opt.wrap = false
 vim.opt.colorcolumn = "120"
 vim.opt.scrolloff = 10                                               -- never have less than 10 lines at the top of bottom as you scroll
+vim.opt.inccommand = 'split'                                         -- Preview substitutiouns live as you type
 
 -- line number options
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 20                                               -- Number of lines to keep above and below cursor
 
 --file options
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir= os.getenv('HOME') .. "/.vim/undodir"              -- change the default directory for neovim to one in home directory (undo tree has a long running dire0
+vim.opt.undodir= os.getenv('HOME') .. "/.vim/undodir"                -- change the default directory for neovim to one in home directory (undo tree has a long running dire0
 vim.opt.undofile = true
 vim.opt.updatetime = 50
 
@@ -35,6 +37,7 @@ vim.opt.termguicolors = true
 vim.opt.mouse= 'a'                                                -- Setting mouse mode on/off (useful for resizing) 
 vim.opt.mousemodel= 'extend'
 vim.opt.clipboard='unnamedplus'                                   -- sync clipboard with os and neovim
+vim.opt.cursorline = true                                         -- show which line your cursor is on
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
@@ -50,3 +53,13 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--  desc = 'Highlight when yanking (copying) text',
+--  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+--  ca llback = function()
+--    vim.highlight.on_yank()
+-- end,
+--})

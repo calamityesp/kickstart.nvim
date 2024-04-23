@@ -1,11 +1,15 @@
+
+--        --------------------------- General vim keymaps ---------------------------------
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')                                    -- Set highlight clear on pressing <Esc> in normal mode
+
+
 -- Basic vim console command remap
-vim.keymap.set("n" , "<leader>pv" , vim.cmd.Ex)
+vim.keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer
 
 
 -- while highlighted, use j and k to move the lines up and down
 --    - will also adjust if you move the lines within code blocks
 vim.keymap.set("v" , "J" , ":m '>+1<CR>gv=gv")
-
 vim.keymap.set("v" , "K" , ":m '<-2<CR>gv=gv")
 
 
@@ -38,10 +42,8 @@ vim.api.nvim_set_keymap('n', '<C-w>j', '<C-w>k', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-w><C-j>', '<C-w>k', {noremap = true})
 
 
--- Set highlight clear on pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
+--        --------------------------- Diagnostic keymaps ---------------------------------
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
