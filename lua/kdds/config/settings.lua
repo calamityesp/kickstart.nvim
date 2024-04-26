@@ -36,7 +36,6 @@ vim.opt.termguicolors = true
 -- vim editor options 
 vim.opt.mouse= 'a'                                                -- Setting mouse mode on/off (useful for resizing) 
 vim.opt.mousemodel= 'extend'
-vim.opt.clipboard='unnamedplus'                                   -- sync clipboard with os and neovim
 vim.opt.cursorline = true                                         -- show which line your cursor is on
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -63,3 +62,16 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --    vim.highlight.on_yank()
 -- end,
 --})
+
+vim.g.clipboard = {
+   name = 'win32yank',
+   copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+   },
+   paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+   },
+   cache_enabled=0
+}
