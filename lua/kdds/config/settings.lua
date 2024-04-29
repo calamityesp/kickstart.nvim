@@ -1,56 +1,55 @@
--- vim.opt.guicursor = ""
-
-
 -- tab/indent options
-vim.opt.tabstop = 3
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 3
-vim.opt.smarttab= true
-vim.opt.smartindent = true
+vim.opt.tabstop = 3                                               -- Number of spaces that a tab character represents.
+vim.opt.expandtab = true                                          -- Convert tabs to spaces
+vim.opt.shiftwidth = 3                                            -- Number of spaces to use for each step of (auto)indent.
+vim.opt.smarttab= true                                            -- Use shiftwidth for tab and backspace functionality.
+vim.opt.smartindent = true                                        -- Automatically indent new lines.
 
 -- highlight options
-vim.opt.hlsearch = true
-vim.opt.incsearch = true                                             -- highlight as you are searching values
+vim.opt.hlsearch = true                                           -- Highlight all search results.
+vim.opt.incsearch = true                                          -- Highlight matches as you type the search.
 
 -- display text options 
-vim.opt.wrap = false
-vim.opt.colorcolumn = "120"
-vim.opt.scrolloff = 10                                               -- never have less than 10 lines at the top of bottom as you scroll
-vim.opt.inccommand = 'split'                                         -- Preview substitutiouns live as you type
+vim.opt.wrap = false                                              -- Display long lines as one line (no wrapping)
+vim.opt.colorcolumn = "120"                                       -- Mark column 120 for line length management
+vim.opt.scrolloff = 10                                            -- Minimum number of lines above and below the cursor
+vim.opt.inccommand = 'split'                                      -- Show effects of substitutions incrementally
 
 -- line number options
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 20                                               -- Number of lines to keep above and below cursor
+vim.opt.number = true                                             -- Show line numbers
+vim.opt.relativenumber = true                                     -- Show relative line numbers
+vim.opt.scrolloff = 20                                            -- Minimum number of lines above and below the cursor
 
 --file options
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir= os.getenv('HOME') .. "/.vim/undodir"                -- change the default directory for neovim to one in home directory (undo tree has a long running dire0
-vim.opt.undofile = true
-vim.opt.updatetime = 50
+vim.opt.swapfile = false                                          -- Disable swapfile creation
+vim.opt.backup = false                                            -- Disable backup file creation
+vim.opt.undodir= os.getenv('HOME') .. "/.vim/undodir"             -- Directory for undo files
+vim.opt.undofile = true                                           -- Enable persistent undo
+vim.opt.updatetime = 50                                           -- Time in milliseconds to write to swap file
 
--- vim terminal options 
-vim.opt.termguicolors = true
+-- vim terminal visual options 
+vim.opt.termguicolors = true                                      -- Enable true color support
+vim.opt.signcolumn = "yes"                                        -- Always display the sign column to show markers like breakpoints and linter warnings
+vim.opt.background = "dark"                                       -- make color scheme dark that can be light or dark
 
 -- vim editor options 
-vim.opt.mouse= 'a'                                                -- Setting mouse mode on/off (useful for resizing) 
-vim.opt.mousemodel= 'extend'
-vim.opt.cursorline = true                                         -- show which line your cursor is on
+vim.opt.mouse= 'a'                                                -- Enable mouse in all modes
+vim.opt.mousemodel= 'extend'                                      -- Set mouse behavior to extend
+vim.opt.cursorline = true                                         -- Highlight the line of the cursor
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.opt.ignorecase = true                                         -- Search case insensitively
+vim.opt.smartcase = true                                          -- Search case sensitively if the search pattern contains uppercase characters
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.opt.splitright = true                                         -- New vertical splits open to the right
+vim.opt.splitbelow = true                                         -- New horizontal splits open below
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.list = true                                               -- Show whitespace characters
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }       -- Customise the representation of whitespace characters
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -63,15 +62,19 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- end,
 --})
 
-vim.g.clipboard = {
-   name = 'win32yank',
-   copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
-   },
-   paste = {
-      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-   },
-   cache_enabled=0
-}
+if vim.fn.has('wsl') == 1 then
+   vim.g.clipboard = {                                           -- Use global clip board when using wsl 
+      name = 'win32yank',
+      copy = {
+         ['+'] = 'clip.exe',
+         ['*'] = 'clip.exe',
+      },
+      paste = {
+         ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+         ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+      },
+      cache_enabled=0
+   }
+else
+   vim.opt.clipboard:append("unnamedplus")                       -- use system clipboard 
+end
