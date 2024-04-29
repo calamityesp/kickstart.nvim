@@ -7,7 +7,7 @@ keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')                                 
 
 
 -- Basic vim console command remap
-keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer
+--[[ keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer ]]
 keymap.set("i", "jk", "<ESC>")                                                     -- Map jk in insert mode to escape out of insert mode
 
 -- while highlighted, use j and k to move the lines up and down
@@ -67,7 +67,7 @@ keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the upper window'
 
 -- Split window keymaps 
 keymap.set('n', '<leader>sv', '<C-w>v', {desc = "Split Screen Vertically"})                              -- split screen vertically
-keymap.set('n', '<leader>sh', '<C-w>h', {desc = "Split Screen Horizontally"})                            -- split screen horizontally
+keymap.set('n', '<leader>sh', '<C-w>s', {desc = "Split Screen Horizontally"})                            -- split screen horizontally
 keymap.set('n', '<leader>se', '<C-w>=', {desc = "Make splits equally sized"})                            -- Make Screens Equally Sized
 keymap.set('n', '<leader>sx', '<cmd>close<CR>', {desc = "Close current split"})                          -- Close current split
 
