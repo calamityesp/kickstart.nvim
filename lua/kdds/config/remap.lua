@@ -69,7 +69,7 @@ keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the upper window'
 keymap.set('n', '<leader>sv', '<C-w>v', {desc = "Split Screen Vertically"})                              -- split screen vertically
 keymap.set('n', '<leader>sh', '<C-w>s', {desc = "Split Screen Horizontally"})                            -- split screen horizontally
 keymap.set('n', '<leader>se', '<C-w>=', {desc = "Make splits equally sized"})                            -- Make Screens Equally Sized
-keymap.set('n', '<leader>sx', '<cmd>close<CR>', {desc = "Close current split"})                          -- Close current split
+keymap.set('n', '<leader>sq', '<cmd>close<CR>', {desc = "Close current split"})                          -- Close current split
 
 -- Tab Management 
 keymap.set('n', '<leader>tn', '<cmd>tabnew<CR>', {desc = 'open a new tab'})                               -- Open a new tab

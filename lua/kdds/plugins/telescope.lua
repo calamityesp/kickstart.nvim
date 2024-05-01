@@ -27,13 +27,18 @@ return {
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
-    local builtin = telescope.builtin
+    local builtin = require("telescope.builtin")
 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
     keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    keymap.set("n", "<leader>f?",function() 
+        vim.cmd(":h Telescope")
+      end, { desc = "Telescope help documentation" })
+    
+
     keymap.set("n", "<leader>fs", function()
-      builtin.grep_string({search = vm.fn.input("Grep --> ")})
+      builtin.grep_string({search = vim.fn.input("Grep --> ")})
       end, { desc = "Find string under cursor in cwd" })
   end,
 }

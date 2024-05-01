@@ -1,3 +1,11 @@
+-- ***********************************************************************************************
+-- *** nvim-treesitter  --Plugin that enhances syntax highlighting, indentation, 
+--                        and parsing by leveraging the Treesitter library, which parses code 
+--                        into a syntax tree. This approach allows for more accurate and 
+--                        language-specific processing, improving developer tools and features 
+--                        within Neovim.
+-- ***********************************************************************************************
+
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
