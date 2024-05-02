@@ -1,11 +1,12 @@
 -- ***********************************************************************************************
--- *** williamboman/mason.nvim  --lsp language server plugin manager (best there is) 
+-- *** williamboman/mason.nvim  --lsp language server plugin manager (best there is)
 -- ***********************************************************************************************
 
 return {
   "williamboman/mason.nvim",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     -- import mason
@@ -13,7 +14,7 @@ return {
 
     -- import mason-lspconfig
     local mason_lspconfig = require("mason-lspconfig")
-    -- local mason_tool_installer = require("mason-tool-installer")
+    local mason_tool_installer = require("mason-tool-installer")
 
     -- enable mason and configure icons
     mason.setup({
@@ -38,16 +39,19 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "clangd",
       },
     })
 
-    -- mason_tool_installer.setup({
-    --   ensure_installed = {
-    --     "prettier",
-    --     "stylua",     -- lua formatter
-    --     "isort",      -- python formatter
-    --     "black",      -- python formatter
-    --   }
-    -- })
+    mason_tool_installer.setup({
+      ensure_installed = {
+        "prettier", -- prettier formatter
+        "stylua",   -- lua formatter
+        "isort",    -- python formatter
+        "black",    -- python formatter
+        "pylint",   -- python  linting
+        "eslint_d", -- js linting
+      },
+    })
   end,
 }

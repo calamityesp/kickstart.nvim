@@ -14,16 +14,16 @@ return {
     local function my_on_attach(bufnr)
       local api = require("nvim-tree.api")
       local function opts(desc)
-        return {desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, nowait = true }
+        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, nowait = true }
       end
 
-      -- default mappings 
+      -- default mappings
       api.config.mappings.default_on_attach(bufnr)
--- test
+      -- test
       -- custom mappings
-      vim.keymap.set('n','<leader>e]', api.tree.change_root_to_node, opts('Root To Parent'))
-      vim.keymap.set('n','<leader>e?', api.tree.toggle_help, opts('Help'))
-      vim.keymap.set('n','<leader>e??', function() 
+      vim.keymap.set('n', '<leader>e]', api.tree.change_root_to_node, opts('Root To Parent'))
+      vim.keymap.set('n', '<leader>e?', api.tree.toggle_help, opts('Help'))
+      vim.keymap.set('n', '<leader>e??', function()
         vim.cmd('h nvim-tree')
       end, opts('nvim help'))
     end
@@ -68,12 +68,12 @@ return {
     })
 
     -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap                                                                                           -- for conciseness
 
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })                         -- toggle file explorer
     keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-    keymap.set("n", "<leader>eff", "<cmd>NvimTreeFocus<CR>", { desc = "Explorer Fuckin Focus" }) -- refresh file explorer
+    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })                     -- collapse file explorer
+    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })                       -- refresh file explorer
+    keymap.set("n", "<leader>eff", "<cmd>NvimTreeFocus<CR>", { desc = "Explorer Fuckin Focus" })                        -- refresh file explorer
   end
 }
