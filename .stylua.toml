@@ -1,5 +1,6 @@
-coif vim.fn.has("wsl") == 1 then
-    if vim.fn.executable("wl-copy") == 0 then
+-- Check if running under WSL and wl-copy is available
+if vim.fn.has("wsl") == 1 then
+    if not vim.fn.executable("wl-copy") then
         print("wl-clipboard not found, clipboard integration won't work")
     else
         vim.g.clipboard = {
@@ -9,17 +10,20 @@ coif vim.fn.has("wsl") == 1 then
                 ["*"] = 'wl-copy --foreground --primary --type text/plain',
             },
             paste = {
-                ["+"] = (function()
-                    return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', {''}, 1)
-                end),
-                ["*"] = (function() 
-                    return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', {''}, 1)
-                end),
+                ["+"] = function()
+                    return vim.fn.systemlist('wl-paste --no-newline | sed -e "s/\r$//"')
+                end,
+                ["*"] = function()
+                    return vim.fn.systemlist('wl-paste --primary --no-newline | sed -e "s/\r$//"')
+                end,
             },
             cache_enabled = true
         }
     end
-endlumn_width = 160
+end
+
+-- General editor configurations (seems like config for another tool, ensure context is correct)
+column_width = 160
 line_endings = "Unix"
 indent_type = "Spaces"
 indent_width = 2
