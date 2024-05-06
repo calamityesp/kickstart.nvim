@@ -53,11 +53,11 @@ keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnosti
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the lower window" })
-keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
-
+-- keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the lower window" })
+-- keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
+--
 -- Split window keymaps
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split Screen Vertically" }) -- split screen vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split Screen Horizontally" }) -- split screen horizontally
