@@ -22,6 +22,11 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          cwd = vim.fn.expand("%:p:h"),    -- sets the current working directory to the directory
+        }
+      }
     })
 
     telescope.load_extension("fzf")

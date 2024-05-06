@@ -5,9 +5,9 @@ local api = vim.api
 --        --------------------------- General keymaps ---------------------------------
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')                                    -- Set highlight clear on pressing <Esc> in normal mode
 
-
 -- Basic vim console command remap
---[[ keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer ]]
+keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer ]]
+
 keymap.set("i", "jk", "<ESC>")                                                     -- Map jk in insert mode to escape out of insert mode
 
 -- while highlighted, use j and k to move the lines up and down

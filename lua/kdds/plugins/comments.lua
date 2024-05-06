@@ -24,9 +24,9 @@ return {
          ---LHS of toggle mappings in NORMAL mode
          toggler = {
             ---Line-comment toggle keymap
-            line = "gcc",
+            line = "<leader>gcc",
             ---Block-comment toggle keymap
-            block = "gbc",
+            block = "<leader>gbc",
          },
          -- for commenting tsx, jsx, svelte, html files
          pre_hook = ts_context_commentstring.create_pre_hook(),
