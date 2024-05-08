@@ -53,14 +53,26 @@ else
                   },
                },
             },
-            -- disable window_picker for
-            -- explorer to work well with
-            -- window splits
-            actions = {
-               open_file = {
-                  window_picker = {
-                     enable = false,
-                  },
+         },
+         hijack_directories = {
+            enable = true,
+            auto_open = true,
+         },
+         update_focused_file = {
+            enable = true,
+            update_root = {
+               enable = true,
+               ignore_list = {},
+            },
+            exclude = false,
+         },
+         -- disable window_picker for
+         -- explorer to work well with
+         -- window splits
+         actions = {
+            open_file = {
+               window_picker = {
+                  enable = false,
                },
             },
             update_focused_file = {
