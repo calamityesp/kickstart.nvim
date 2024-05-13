@@ -76,7 +76,20 @@ if vim.fn.has 'wsl' == 1 then
       cache_enabled = 0,
    }
 else
-   vim.opt.clipboard:append 'unnamedplus' -- use system clipboard
+   vim.g.clipboard = {
+      name = 'myClipboard',
+      copy = {
+         ['+'] = {'tmux', 'load-buffer', '-'},
+         ['*'] = {'tmux', 'load-buffer', '-'}
+      },
+      paste = {
+         ['+'] = {'tmux', 'save-buffer', '-'},
+         ['*'] = {'tmux', 'save-buffer', '-'}
+      },
+      cache_enabled = 1
+   }
+
+   vim.opt.clipboard = 'unnamedplus' -- use system clipboard
 end
 
 -- #-- Check if running under WSL and wl-copy is available

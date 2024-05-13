@@ -1,7 +1,6 @@
 if vim.fn.expand('%:p'):match('vobs') then 
    return {}
 else
-
    return {
       "nvim-tree/nvim-tree.lua",
       dependencies = "nvim-tree/nvim-web-devicons",
@@ -53,27 +52,9 @@ else
                   },
                },
             },
-         },
-         hijack_directories = {
-            enable = true,
-            auto_open = true,
-         },
-         update_focused_file = {
-            enable = true,
-            update_root = {
+            hijack_directories = {
                enable = true,
-               ignore_list = {},
-            },
-            exclude = false,
-         },
-         -- disable window_picker for
-         -- explorer to work well with
-         -- window splits
-         actions = {
-            open_file = {
-               window_picker = {
-                  enable = false,
-               },
+               auto_open = true,
             },
             update_focused_file = {
                enable = true,
@@ -82,6 +63,16 @@ else
                   ignore_list = {},
                },
                exclude = false,
+            },
+            -- disable window_picker for
+            -- explorer to work well with
+            -- window splits
+            actions = {
+               open_file = {
+                  window_picker = {
+                     enable = false,
+                  },
+               },
             },
             filters = {
                custom = { ".DS_Store" },
