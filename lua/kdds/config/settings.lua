@@ -3,7 +3,7 @@ vim.opt.tabstop = 3 -- Number of spaces that a tab character represents.
 vim.opt.expandtab = true -- Convert tabs to spaces
 vim.opt.shiftwidth = 3 -- Number of spaces to use for each step of (auto)indent.
 vim.opt.smarttab = true -- Use shiftwidth for tab and backspace functionality.
-vim.opt.smartindent = true -- Automatically indent new lines.
+vim.opt.smartindent = false -- Automatically indent new lines.
 
 -- highlight options
 vim.opt.hlsearch = true -- Highlight all search results.

@@ -6,11 +6,15 @@
    event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
    init = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 500
+      vim.o.timeoutlen = 100
    end,
    config = function() -- This is the function that runs, AFTER loading
 
-      require('which-key').setup()
+      require('which-key').setup({
+         triggers_blacklist = {
+            i = {"j", "k", "<leader>"}
+         }
+      })
 
       -- Document existing key chains
       require('which-key').register {
