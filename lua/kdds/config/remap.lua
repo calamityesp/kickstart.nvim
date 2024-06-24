@@ -32,14 +32,14 @@ keymap.set("v", "<leader>d", '"_d')
 -- Primeagen keymap to change projects using tmux
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
--- remap the j and k keys so that I can start using the keyboard
-api.nvim_set_keymap("n", "k", "j", { noremap = true })
-api.nvim_set_keymap("n", "<C-w>k", "<C-w>j", { noremap = true })
-api.nvim_set_keymap("n", "<C-w><C-k>", "<C-w>j", { noremap = true })
-
-api.nvim_set_keymap("n", "j", "k", { noremap = true })
-api.nvim_set_keymap("n", "<C-w>j", "<C-w>k", { noremap = true })
-api.nvim_set_keymap("n", "<C-w><C-j>", "<C-w>k", { noremap = true })
+-- -- remap the j and k keys so that I can start using the keyboard
+-- api.nvim_set_keymap("n", "k", "j", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w>k", "<C-w>j", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w><C-k>", "<C-w>j", { noremap = true })
+--
+-- api.nvim_set_keymap("n", "j", "k", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w>j", "<C-w>k", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w><C-j>", "<C-w>k", { noremap = true })
 
 --        --------------------------- Diagnostic keymaps ---------------------------------
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -47,17 +47,24 @@ keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnosti
 --keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+--        --------------------------- Text Editing remaps ---------------------------------
+keymap.set("n", "<leader>cc,", "ct,", { desc = "clear up to next comma" })
+keymap.set("n", "<leader>cc)", "ct)", { desc = "clear up to next closing parenthesis" })
+keymap.set("n", '<leader>cc"', 'ct"', { desc = "clear up to next double quotes" })
+keymap.set("n", "<leader>cc ", "ct ", { desc = "clear up to next space" })
+keymap.set("n", "<leader>ccc", "cc", { desc = "clear whole line" })
+
 --          -----------------------------------------Window Management ------------------------------------
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
--- keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the lower window" })
--- keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
---
+keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+keymap.set("n", "<C-j>", "<C-w><C-k>", { desc = "Move focus to the lower window" })
+keymap.set("n", "<C-k>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
+
 -- Split window keymaps
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split Screen Vertically" }) -- split screen vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split Screen Horizontally" }) -- split screen horizontally
