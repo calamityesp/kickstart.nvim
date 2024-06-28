@@ -19,7 +19,7 @@ return {
         ------------------------------------------------------
         ------------- line highlight color -------------------
         ------------------------------------------------------
-        -- local bg_dark = "#000D18" -- Color of the inactive background
+        -- local bg_dark = "#000D18" -- Color of the inactivea background
         -- local bg_highlight = "#143652"
         -- local bg_highlight = "#512200"
         local bg_highlight = "#4c341c"

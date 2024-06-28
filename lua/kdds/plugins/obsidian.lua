@@ -1,7 +1,8 @@
 return {
-    "epwalsh/obsidian.nvim",
+    "calamityesp/obsidian.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
+    lazy = false,
     ft = "markdown",
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     -- event = {
@@ -16,18 +17,46 @@ return {
 
         -- see below for full list of optional dependencies 👇
     },
-    opts = {
-        workspaces = {
-            {
-                name = "personal",
-                path = "~/.config/nvim/obsidian/Calamity_Notes/",
-            },
-            -- {
-            --   name = "work",
-            --   path = "~/vaults/work",
-            -- },
-        },
+    config = function()
+        local obsidian = require("obsidian")
 
-        -- see below for full list of options 👇
-    },
+        obsidian.setup({
+            workspaces = {
+                {
+                    name = "personal",
+                    path = "~/.oh-my-bash/custom/obsidian/Calamity_Notes/",
+                },
+                -- {
+                --   name = "work",
+                --   path = "~/vaults/work",
+                -- },
+            },
+            mappings = {
+                ["<leader>och"] = {
+                    action = function()
+                        return require("obsidian").util.toggle_checkbox()
+                    end,
+                    opts = { buffer = true, desc = "toggle checkboxes" },
+                },
+                -- ["<leader>oov"] = {
+                --     action = function()
+                --         vim.cmd("tabnew")
+                --         vim.cmd("ObsidianSearch")
+                --     end,
+                -- },
+            },
+        })
+
+        --        Obsidian related keymaps  -------------------
+        -- Open notes in new tab
+        vim.keymap.set("n", "<leader>oov", function()
+            vim.cmd("tabnew")
+            vim.cmd("ObsidianSearch")
+        end, { desc = "Open note in new tab" })
+
+        vim.keymap.set("n", "<leader>oos", function()
+            vim.cmd("vsplit")
+            vim.cmd("ObsidianSearch")
+        end, { desc = "open note in new split" })
+    end,
 }

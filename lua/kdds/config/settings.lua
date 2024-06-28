@@ -45,6 +45,7 @@ vim.opt.smartcase = true -- Search case sensitively if the search pattern contai
 vim.opt.splitright = true -- New vertical splits open to the right
 vim.opt.splitbelow = true -- New horizontal splits open below
 
+vim.opt.conceallevel = 2 -- Replace hidden text with a single character
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -63,20 +64,20 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- Customise the
 --})
 
 if vim.fn.has("wsl") == 1 then
-   vim.g.clipboard = { -- Use global clip board when using wsl
-      name = "win32yank",
-      copy = {
-         ["+"] = "clip.exe",
-         ["*"] = "clip.exe",
-      },
-      paste = {
-         ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-         ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-      },
-      cache_enabled = 0,
-   }
+    vim.g.clipboard = { -- Use global clip board when using wsl
+        name = "win32yank",
+        copy = {
+            ["+"] = "clip.exe",
+            ["*"] = "clip.exe",
+        },
+        paste = {
+            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
 else
-   vim.opt.clipboard:append("unnamedplus") -- use system clipboard
+    vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 end
 
 -- #-- Check if running under WSL and wl-copy is available
