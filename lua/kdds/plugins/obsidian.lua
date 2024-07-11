@@ -23,8 +23,8 @@ return {
         obsidian.setup({
             workspaces = {
                 {
-                    name = "personal",
-                    path = "~/.oh-my-bash/custom/obsidian/Calamity_Notes/",
+                    name = "Coding References",
+                    path = "~/.oh-my-bash/obsidian/Calamity_Notes/",
                 },
                 -- {
                 --   name = "work",
@@ -38,25 +38,44 @@ return {
                     end,
                     opts = { buffer = true, desc = "toggle checkboxes" },
                 },
-                -- ["<leader>oov"] = {
-                --     action = function()
-                --         vim.cmd("tabnew")
-                --         vim.cmd("ObsidianSearch")
-                --     end,
-                -- },
+            },
+            templates = {
+                folder = "TEMPLATES",
+                date_format = "%Y-%m-%d-%a",
+                time_format = "%H:%M",
             },
         })
 
         --        Obsidian related keymaps  -------------------
         -- Open notes in new tab
-        vim.keymap.set("n", "<leader>oov", function()
+        vim.keymap.set("n", "<leader>oot", function()
             vim.cmd("tabnew")
             vim.cmd("ObsidianSearch")
         end, { desc = "Open note in new tab" })
 
+        -- Open notes in new split
         vim.keymap.set("n", "<leader>oos", function()
             vim.cmd("vsplit")
             vim.cmd("ObsidianSearch")
         end, { desc = "open note in new split" })
+
+        vim.keymap.set("n", "<leader>ooo", function()
+            vim.cmd("ObsidianSearch")
+        end, { desc = "open new note in current buffer" })
+
+        -- Template command
+        vim.keymap.set("n", "<leader>ot", function()
+            vim.cmd("ObsidianTemplate")
+        end)
+
+        -- New Obsidian Note Insert
+        vim.keymap.set("n", "<leader>oon", function()
+            vim.cmd("ObsidianNew")
+        end, { desc = "Create a new obsidian note" })
+
+        -- Search for buffer by tag id
+        vim.keymap.set("n", "<leader>ott", function()
+            vim.cmd("ObsidianTags")
+        end, { desc = "search by tag" })
     end,
 }
