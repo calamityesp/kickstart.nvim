@@ -66,10 +66,10 @@ keymap.set("n", "<leader>ccc", "cc", { desc = "clear whole line" })
 -- keymap.set("n", "<C-k>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
 
 --  See `:help wincmd` for a list of all window commands
-keymap.set("n", "<C-Left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-keymap.set("n", "<C-Right>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-keymap.set("n", "<C-Down>", "<C-w><C-k>", { desc = "Move focus to the lower window" })
-keymap.set("n", "<C-Up>", "<C-w><C-j>", { desc = "Move focus to the upper window" })
+keymap.set("n", "<C-Left>", "<C-w>h", { desc = "Move focus to the left window" })
+keymap.set("n", "<C-Right>", "<C-w>l", { desc = "Move focus to the right window" })
+keymap.set("n", "<C-Down>", "<C-w>j", { desc = "Move focus to the lower window" })
+keymap.set("n", "<C-Up>", "<C-w>k", { desc = "Move focus to the upper window" })
 
 -- Split window keymaps
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split Screen Vertically" }) -- split screen vertically
