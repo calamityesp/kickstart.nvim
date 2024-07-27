@@ -26,10 +26,10 @@ return {
                     name = "Coding References",
                     path = "~/.oh-my-bash/obsidian/Calamity_Notes/",
                 },
-                -- {
-                --   name = "work",
-                --   path = "~/vaults/work",
-                -- },
+                {
+                    name = "Handwritten Notes",
+                    path = "~/.oh-my-bash/obsidian/Calamity_Draw/",
+                },
             },
             mappings = {
                 ["<leader>och"] = {
@@ -81,7 +81,12 @@ return {
         -- Create a new template file
         vim.keymap.set("n", "<leader>otn", function()
             local templateName = vim.fn.input("TemplateName : ")
-            vim.cmd("ObsidianNew TEMPLATES/" .. templateName)
+            vim.cmd("ObsidianNew TEMPLATES/" .. templateName .. " template.md")
         end, { desc = "create a new template " })
+
+        -- Open Obsidian editor
+        vim.keymap.set("n", "<leader>oop", function()
+            vim.cmd("ObsidianOpen")
+        end, { desc = "Open the obsidian editor" })
     end,
 }
