@@ -77,5 +77,11 @@ return {
         vim.keymap.set("n", "<leader>ott", function()
             vim.cmd("ObsidianTags")
         end, { desc = "search by tag" })
+
+        -- Create a new template file
+        vim.keymap.set("n", "<leader>otn", function()
+            local templateName = vim.fn.input("TemplateName : ")
+            vim.cmd("ObsidianNew TEMPLATES/" .. templateName)
+        end, { desc = "create a new template " })
     end,
 }
