@@ -7,6 +7,7 @@ return {
     },
     config = function()
         local harpoon = require("harpoon")
+        local tmux = require("harpoon.tmux")
         harpoon:setup({})
 
         -- Configure telescope
@@ -78,8 +79,18 @@ return {
         vim.keymap.set("n", "<leader>h<left>", function()
             harpoon:list():prev()
         end)
+
         vim.keymap.set("n", "<leader>h<right>", function()
             harpoon:list():next()
         end)
+
+        -- Harpoon keymaps for tmux
+        vim.keymap.set("n", "<leader>ht1", function()
+            tmux:gotoTerminal(1)
+        end, { desc = "Goto tmux window 1" })
+
+        vim.keymap.set("n", "<leader>ht2", function()
+            tmux:gotoTerminal(2)
+        end, { desc = "Goto tmux window 2" })
     end,
 }
