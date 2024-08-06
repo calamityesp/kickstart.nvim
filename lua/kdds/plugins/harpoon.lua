@@ -83,11 +83,19 @@ return {
             harpoon:list():next()
         end)
 
+        -- remove from harpoon list
         for i = 1, 9 do
             vim.keymap.set("n", "<leader>hr" .. i, function()
                 harpoon:list():remove_at(i)
                 print("Harpoon removed item at index " .. i)
             end)
         end
+
+        vim.keymap.set("n", "<leader>hra", function()
+            for i = 1, 9 do
+                harpoon:list():remove_at(i)
+            end
+            print("Harpoon removed all stored buffers")
+        end, { desc = "Clear harpoon list" })
     end,
 }
