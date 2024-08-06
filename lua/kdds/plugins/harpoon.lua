@@ -82,5 +82,12 @@ return {
         vim.keymap.set("n", "<leader>h<right>", function()
             harpoon:list():next()
         end)
+
+        for i = 1, 9 do
+            vim.keymap.set("n", "<leader>hr" .. i, function()
+                harpoon:list():remove_at(i)
+                print("Harpoon removed item at index " .. i)
+            end)
+        end
     end,
 }
