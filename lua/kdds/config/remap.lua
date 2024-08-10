@@ -53,6 +53,16 @@ keymap.set("n", "<leader>cc)", "ct)", { desc = "clear up to next closing parenth
 keymap.set("n", '<leader>cc"', 'ct"', { desc = "clear up to next double quotes" })
 keymap.set("n", "<leader>cc ", "ct ", { desc = "clear up to next space" })
 keymap.set("n", "<leader>ccc", "cc", { desc = "clear whole line" })
+keymap.set("n", "<leader>cc<", "ct<", { desc = "clear up to less than" })
+
+--        --------------------------- Tmux Interaction remaps ---------------------------------
+keymap.set("", "<leader>b<left>", function()
+    vim.fn.system("tmux previous-window")
+end, { desc = "Move to tmux previous window" })
+
+keymap.set("", "<leader>b<right>", function()
+    vim.fn.system("tmux next-window")
+end, { desc = "Move to tmux next window" })
 
 --          -----------------------------------------Window Management ------------------------------------
 
