@@ -41,7 +41,7 @@ return {
                 "pyright",
                 "tsserver",
                 "clangd",
-                -- "eslint_lsp",
+                "eslint",
             },
         })
 
@@ -52,7 +52,7 @@ return {
                 "isort", -- python formatter
                 "black", -- python formatter
                 "pylint", -- python  linting
-                -- "eslint_d", -- js linting
+                "eslint_d", -- js linting
                 --            "clang-format", -- c  language formating
             },
         })
