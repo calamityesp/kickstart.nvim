@@ -149,6 +149,13 @@ return {
                             disableSuggestions = true,
                         },
                     },
+                    filetypes={
+                        "javascript",
+                         "typescriptreact",
+                        "javascriptreact",
+                       "typescript",
+                        "vue"
+                    }
                 })
             end,
             ["gopls"] = function()

@@ -45,6 +45,7 @@ return {
                 "vimdoc",
                 "c",
                 "go",
+                "python",
             },
             incremental_selection = {
                 enable = true,
