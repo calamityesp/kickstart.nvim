@@ -40,7 +40,6 @@ return {
                 "prismals",
                 "pyright",
                 "ruff",
-                "mypy",
                 "tsserver",
                 "clangd",
                 "eslint",
@@ -55,6 +54,7 @@ return {
                 "black", -- python formatter
                 "pylint", -- python  linting
                 "eslint_d", -- js linting
+                "mypy",
                 --            "clang-format", -- c  language formating
             },
         })
