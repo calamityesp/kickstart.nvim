@@ -39,6 +39,8 @@ return {
                 "emmet_ls",
                 "prismals",
                 "pyright",
+                "ruff",
+                "mypy",
                 "tsserver",
                 "clangd",
                 "eslint",
