@@ -3,6 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
+        "Hoffs/omnisharp-extended-lsp.nvim",
         { "antosha417/nvim-lsp-file-operations", config = true },
         { "folke/neodev.nvim", opts = {} },
     },
@@ -68,7 +69,13 @@ return {
         })
 
         -- used to enable autocompletion (assign to every lsp server config)
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        -- local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            require("cmp_nvim_lsp").default_capabilities()
+        )
         local utils = require("lspconfig/util")
 
         -- Change the Diagnostic symbols in the sign column (gutter)
@@ -141,21 +148,21 @@ return {
                     },
                 })
             end,
-            ["tsserver"] = function()
-                lspconfig["tsserver"].setup({
+            ["ts_ls"] = function()
+                lspconfig["ts_ls"].setup({
                     capabilities = capabilities,
                     init_options = {
                         preferences = {
                             disableSuggestions = true,
                         },
                     },
-                    filetypes={
+                    filetypes = {
                         "javascript",
-                         "typescriptreact",
+                        "typescriptreact",
                         "javascriptreact",
-                       "typescript",
-                        "vue"
-                    }
+                        "typescript",
+                        "vue",
+                    },
                 })
             end,
             ["gopls"] = function()
@@ -174,6 +181,84 @@ return {
                         },
                     },
                 })
+            end,
+            ["eslint"] = function()
+                lspconfig["eslint"].setup({
+                    cmd = { "node_modules/.bin/eslint", "--stdio" }, -- Ensure the path to local ESLint
+                    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+                    settings = {
+                        format = true,
+                    },
+                    -- codeAction = {
+                    --     disableRuleComment = {
+                    --         enable = true,
+                    --         location = "separateLine",
+                    --     },
+                    --     showDocumentation = {
+                    --         enable = true,
+                    --     },
+                    -- },
+                    -- codeActionOnSave = {
+                    --     enable = false,
+                    --     mode = "all",
+                    -- },
+                    -- experimental = {
+                    --     useFlatConfig = false,
+                    -- },
+                    -- format = true,
+                    -- nodePath = "",
+                    -- onIgnoredFiles = "off",
+                    -- problems = {
+                    --     shortenToSingleLine = false,
+                    -- },
+                    -- quiet = false,
+                    -- rulesCustomizations = {},
+                    -- run = "onType",
+                    -- useESLintClass = false,
+                    -- validate = "on",
+                    -- workingDirectory = {
+                    --     mode = "location",
+                    -- },
+                })
+            end,
+            ["omnisharp"] = function()
+                lspconfig["omnisharp"].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    handlers = {
+                        ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+                        ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
+                        ["textDocument/references"] = require("omnisharp_extended").references_handler,
+                        ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
+                    },
+                })
+            end,
+            ["cssls"] = function()
+                lspconfig["cssls"].setup({
+                    settings = {
+                        css = {
+                            validate = true,
+                            lint = {
+                                unknownAtRules = "ignore",
+                            },
+                        },
+                        scss = {
+                            validate = true,
+                            lint = {
+                                unknownAtRules = "ignore",
+                            },
+                        },
+                        less = {
+                            validate = true,
+                            lint = {
+                                unknownAtRules = "ignore",
+                            },
+                        },
+                    },
+                })
+            end,
+            ["tailwindcss"] = function()
+                lspconfig["tailwindcss"].setup({})
             end,
         })
     end,

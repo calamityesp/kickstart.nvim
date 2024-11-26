@@ -5,7 +5,7 @@ return {
         require("toggleterm").setup({
             size = 40,
             open_mapping = [[<leader>\\]],
-            terminal_mappings = true,
+            -- terminal_mappings = true,
             direction = "float",
         })
 

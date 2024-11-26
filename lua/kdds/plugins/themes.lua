@@ -62,9 +62,9 @@ return {
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" }) -- set the background to none to match terminal emulator color
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) -- same as above for floating windows
         vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" }) -- same as above for floating windows
-        vim.cmd("colorscheme tokyonight")
+        -- vim.cmd("colorscheme tokyonight")
         -- vim.cmd("colorscheme tokyonight-night")
-        -- vim.cmd("colorscheme tokyonight-storm")
+        vim.cmd("colorscheme tokyonight-storm")
         -- vim.cmd("colorscheme tokyonight-moon")
     end,
 }

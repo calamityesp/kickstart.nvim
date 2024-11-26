@@ -4,7 +4,6 @@
 
 return {
     "windwp/nvim-ts-autotag",
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
         local tsAutotag = require("nvim-ts-autotag")
         tsAutotag.setup({
@@ -19,7 +18,7 @@ return {
             -- doesn't work well in a specific filetype
             per_filetype = {
                 ["html"] = {
-                    enable_close = false,
+                    enable_close = true,
                 },
             },
         })
