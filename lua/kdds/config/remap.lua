@@ -67,6 +67,9 @@ keymap.set("", "<leader>b<right>", function()
     vim.fn.system("tmux next-window")
 end, { desc = "Move to tmux next window" })
 
+keymap.set("n", "<leader>bv", function()
+    vim.cmd("!tmux split-window -v")
+end, { desc = "Create a vertical tmux window from current buffer" })
 --          -----------------------------------------Window Management ------------------------------------
 
 -- Keybinds to make split navigation easier.
