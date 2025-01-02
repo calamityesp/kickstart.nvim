@@ -11,7 +11,7 @@ vim.opt.incsearch = true -- Highlight matches as you type the search.
 
 -- display text options
 vim.opt.wrap = false -- Display long lines as one line (no wrapping)
-vim.opt.colorcolumn = "120" -- Mark column 120 for line length management
+vim.opt.colorcolumn = "80" -- Mark column 120 for line length management
 vim.opt.scrolloff = 10 -- Minimum number of lines above and below the cursor
 vim.opt.inccommand = "split" -- Show effects of substitutions incrementally
 
@@ -63,22 +63,22 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- Customise the
 -- end,
 --})
 
-if vim.fn.has("wsl") == 1 then
-    vim.g.clipboard = { -- Use global clip board when using wsl
-        name = "win32yank",
-        copy = {
-            ["+"] = "clip.exe",
-            ["*"] = "clip.exe",
-        },
-        paste = {
-            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-        },
-        cache_enabled = 0,
-    }
-else
-    vim.opt.clipboard:append("unnamedplus") -- use system clipboard
-end
+-- if vim.fn.has("wsl") == 1 then
+--     vim.g.clipboard = { -- Use global clip board when using wsl
+--         name = "win32yank",
+--         copy = {
+--             ["+"] = "clip.exe",
+--             ["*"] = "clip.exe",
+--         },
+--         paste = {
+--             ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+--             ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+--         },
+--         cache_enabled = 0,
+--     }
+-- else
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard
+-- end
 
 -- #-- Check if running under WSL and wl-copy is available
 -- # if vim.fn.has("wsl") == 1 then

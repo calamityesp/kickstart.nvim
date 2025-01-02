@@ -42,6 +42,7 @@ return {
                 "ruff",
                 "clangd",
                 "eslint",
+                "omnisharp",
             },
         })
 
