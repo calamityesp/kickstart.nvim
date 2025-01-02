@@ -8,6 +8,7 @@ keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- Set highlight clear on pressi
 -- Basic vim console command remap
 --[[ keymap.set("n" , "<leader>pv" , vim.cmd.Ex)                                        -- Map leader<pv> to open netrw file explorer ]]
 keymap.set("i", "jk", "<ESC>") -- Map jk in insert mode to escape out of insert mode
+keymap.set("v", "<leader>jk", "<ESC>") -- Map jk in insert mode to escape out of insert mode
 
 -- while highlighted, use j and k to move the lines up and down
 --    - will also adjust if you move the lines within code blocks
@@ -70,6 +71,10 @@ end, { desc = "Move to tmux next window" })
 keymap.set("n", "<leader>bv", function()
     vim.cmd("!tmux split-window -v")
 end, { desc = "Create a vertical tmux window from current buffer" })
+
+keymap.set("n", "<leader>bn", function()
+    vim.cmd("!tmux new-window")
+end, { desc = "Creates a new tmux window from current file location" })
 --          -----------------------------------------Window Management ------------------------------------
 
 -- Keybinds to make split navigation easier.
@@ -101,3 +106,6 @@ keymap.set("n", "<leader>th", "<cmd>tabn<CR><cmd>NvimTreeRefresh<CR>", { desc = 
 keymap.set("n", "<leader>t<Left>", "<cmd>tabp<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to previous tab" }) -- Go to previous tab
 keymap.set("n", "<leader>tl", "<cmd>tabp<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to previous tab" }) -- Go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR><cmd>NvimTreeRefresh<CR>", { desc = "Open current bugger in new tab" }) --Open current buffer in new tab
+
+-- MISC
+keymap.set("v", "<leader>tt", [[:%!tr -s " " | column -t -s '|' -o '|' <CR>]], { desc = "Align markdown table" })

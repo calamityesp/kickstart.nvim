@@ -11,7 +11,7 @@ vim.opt.incsearch = true -- Highlight matches as you type the search.
 
 -- display text options
 vim.opt.wrap = false -- Display long lines as one line (no wrapping)
-vim.opt.colorcolumn = "120" -- Mark column 120 for line length management
+vim.opt.colorcolumn = "80" -- Mark column 120 for line length management
 vim.opt.scrolloff = 10 -- Minimum number of lines above and below the cursor
 vim.opt.inccommand = "split" -- Show effects of substitutions incrementally
 

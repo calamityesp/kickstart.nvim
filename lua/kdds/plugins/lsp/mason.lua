@@ -42,6 +42,8 @@ return {
                 "ruff",
                 "clangd",
                 "eslint",
+                "omnisharp",
+                -- "csharp_ls",
             },
         })
 
