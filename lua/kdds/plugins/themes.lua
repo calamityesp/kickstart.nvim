@@ -1,5 +1,4 @@
---      tokyonight
--- -----------------------------------------
+--      tokyonight -----------------------------------------
 -- return {
 --     "folke/tokyonight.nvim",
 --     priority = 1000,
@@ -191,7 +190,10 @@ return {
                 gitsigns = true,
                 treesitter = true,
                 nvimtree = true,
-                telescope = true,
+                telescope = {
+                    enabled = true,
+                },
+                markdown = true,
             },
         })
 
