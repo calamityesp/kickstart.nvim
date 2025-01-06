@@ -43,6 +43,7 @@ return {
                 "clangd",
                 "eslint",
                 "omnisharp",
+                -- "csharp_ls",
             },
         })
 

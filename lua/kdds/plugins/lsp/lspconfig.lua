@@ -4,6 +4,7 @@ return {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "Hoffs/omnisharp-extended-lsp.nvim",
+        -- "Decodetalkers/csharpls-extended-lsp.nvim",
         { "antosha417/nvim-lsp-file-operations", config = true },
         { "folke/neodev.nvim", opts = {} },
     },
@@ -223,8 +224,54 @@ return {
             end,
             ["omnisharp"] = function()
                 lspconfig["omnisharp"].setup({
+
+                    cmd = {
+                        "dotnet",
+                        "/home/calamityesp/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll",
+                    },
+
                     on_attach = on_attach,
                     capabilities = capabilities,
+                    settings = {
+                        FormattingOptions = {
+                            -- Enables support for reading code style, naming convention and analyzer
+                            -- settings from .editorconfig.
+                            EnableEditorConfigSupport = true,
+                            -- Specifies whether 'using' directives should be grouped and sorted during
+                            -- document formatting.
+                            OrganizeImports = nil,
+                        },
+                        MsBuild = {
+                            -- If true, MSBuild project system will only load projects for files that
+                            -- were opened in the editor. This setting is useful for big C# codebases
+                            -- and allows for faster initialization of code navigation features only
+                            -- for projects that are relevant to code that is being edited. With this
+                            -- setting enabled OmniSharp may load fewer projects and may thus display
+                            -- incomplete reference lists for symbols.
+                            LoadProjectsOnDemand = nil,
+                        },
+                        RoslynExtensionsOptions = {
+                            -- Enables support for roslyn analyzers, code fixes and rulesets.
+                            EnableAnalyzersSupport = true,
+                            -- Enables support for showing unimported types and unimported extension
+                            -- methods in completion lists. When committed, the appropriate using
+                            -- directive will be added at the top of the current file. This option can
+                            -- have a negative impact on initial completion responsiveness,
+                            -- particularly for the first few completion sessions after opening a
+                            -- solution.
+                            EnableImportCompletion = true,
+                            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+                            -- true
+                            AnalyzeOpenDocumentsOnly = nil,
+                            EnableMetadataSupport = true,
+                            EnableDecompilationSupport = true,
+                        },
+                        Sdk = {
+                            -- Specifies whether to include preview versions of the .NET SDK when
+                            -- determining which version to use for project loading.
+                            IncludePrereleases = true,
+                        },
+                    },
                     handlers = {
                         ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
                         ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
@@ -233,6 +280,20 @@ return {
                     },
                 })
             end,
+            -- ["csharp_ls"] = function()
+            --     lspconfig["csharp_ls"].setup({
+            --
+            --         handlers = {
+            --             ["textDocument/definition"] = require("csharpls_extended").handler,
+            --             ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+            --         },
+            --         cmd = {
+            --             "dotnet",
+            --             "/home/calamityesp/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll",
+            --         },
+            --     })
+            -- end,
+            --
             ["cssls"] = function()
                 lspconfig["cssls"].setup({
                     settings = {
