@@ -321,6 +321,11 @@ return {
             ["tailwindcss"] = function()
                 lspconfig["tailwindcss"].setup({})
             end,
+            ["clangd"] = function()
+                lspconfig["clangd"].setup({
+                    filetypes = { "c", "cpp", "obj", "objcpp", "proto", "hpp" },
+                })
+            end,
         })
     end,
 }
