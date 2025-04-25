@@ -10,6 +10,7 @@ return {
    config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      local projects = require("project_nvim")
 
       telescope.setup({
          defaults = {
@@ -24,6 +25,7 @@ return {
          },
       })
 
+      telescope.load_extension("projects")
       telescope.load_extension("fzf")
 
       -- set keymaps
@@ -41,5 +43,6 @@ return {
       keymap.set("n", "<leader>fs", function()
          builtin.grep_string({ search = vim.fn.input("Grep --> ") })
       end, { desc = "Find string under cursor in cwd" })
+
    end,
 }

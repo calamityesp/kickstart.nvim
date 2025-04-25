@@ -133,7 +133,14 @@ return {
       end,
       ["clangd"] = function ()
         lspconfig["clangd"].setup({
-          capabilities = capabilities
+          capabilities = capabilities,
+        })
+      end,
+      ["pyright"] = function ()
+        lspconfig["pyright"].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          filetypes = {"python"}
         })
       end,
     })

@@ -33,14 +33,14 @@ keymap.set("v", "<leader>d", '"_d')
 -- Primeagen keymap to change projects using tmux
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
--- remap the j and k keys so that I can start using the keyboard
-api.nvim_set_keymap("n", "k", "j", { noremap = true })
-api.nvim_set_keymap("n", "<C-w>k", "<C-w>j", { noremap = true })
-api.nvim_set_keymap("n", "<C-w><C-k>", "<C-w>j", { noremap = true })
-
-api.nvim_set_keymap("n", "j", "k", { noremap = true })
-api.nvim_set_keymap("n", "<C-w>j", "<C-w>k", { noremap = true })
-api.nvim_set_keymap("n", "<C-w><C-j>", "<C-w>k", { noremap = true })
+-- -- remap the j and k keys so that I can start using the keyboard
+-- api.nvim_set_keymap("n", "k", "j", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w>k", "<C-w>j", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w><C-k>", "<C-w>j", { noremap = true })
+--
+-- api.nvim_set_keymap("n", "j", "k", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w>j", "<C-w>k", { noremap = true })
+-- api.nvim_set_keymap("n", "<C-w><C-j>", "<C-w>k", { noremap = true })
 
 --        --------------------------- Diagnostic keymaps ---------------------------------
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -69,5 +69,7 @@ keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }
 keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "open a new tab" }) -- Open a new tab
 keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- Close current tab
 keymap.set("n", "<leader>t<Right>", "<cmd>tabn<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to next tab" }) -- Move to next tab
+keymap.set("n", "<leader>tl", "<cmd>tabn<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to next tab" }) -- Move to next tab
 keymap.set("n", "<leader>t<Left>", "<cmd>tabp<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to previous tab" }) -- Go to previous tab
+keymap.set("n", "<leader>th", "<cmd>tabp<CR><cmd>NvimTreeRefresh<CR>", { desc = "Go to previous tab" }) -- Go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR><cmd>NvimTreeRefresh<CR>", { desc = "Open current bugger in new tab" }) --Open current buffer in new tab

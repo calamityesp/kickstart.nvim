@@ -38,7 +38,7 @@ return {
            -- "graphql",
           --  "emmet_ls",
           --  "prismals",
-          --  "pyright",
+           "pyright",
             "clangd",
          },
       })
@@ -47,9 +47,10 @@ return {
          ensure_installed = {
             --"prettier", -- prettier formatter
             "stylua", -- lua formatter
-            --"isort", -- python formatter
-            --"black", -- python formatter
-            --"pylint", -- python  linting
+            "isort", -- python formatter
+            "black", -- python formatter - auto formatting
+            "mypy",     -- python formatter  (mypy and ruff are needed together)
+            "ruff",     -- python formatter
             --"eslint_d", -- js linting
             --            "clang-format", -- c  language formating
          },
