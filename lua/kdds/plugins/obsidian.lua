@@ -24,11 +24,11 @@ return {
             workspaces = {
                 {
                     name = "Coding References",
-                    path = "~/.oh-my-bash/obsidian/Calamity_Notes/",
+                    path = "/home/calamityesp/OneDrive/Obsidian/Calamity_Notes",
                 },
                 {
                     name = "Handwritten Notes",
-                    path = "~/.oh-my-bash/obsidian/Calamity_Draw/",
+                    path = "~/.oh-my-bash/Obsidian/Calamity_Draw/",
                 },
             },
             mappings = {
