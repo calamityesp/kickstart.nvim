@@ -52,6 +52,8 @@ vim.opt.conceallevel = 2 -- Replace hidden text with a single character
 vim.opt.list = true -- Show whitespace characters
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- Customise the representation of whitespace characters
 
+vim.diagnostic.config({ virtual_text = true })
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
